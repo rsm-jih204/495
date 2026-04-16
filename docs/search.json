@@ -109,6 +109,13 @@
     "href": "projects/project1/index.html#notebook",
     "title": "Customer Churn Analysis",
     "section": "Notebook",
+    "text": "Notebook"
+  },
+  {
+    "objectID": "projects/project1/index.html#notebook-1",
+    "href": "projects/project1/index.html#notebook-1",
+    "title": "Customer Churn Analysis",
+    "section": "Notebook",
     "text": "Notebook\nView Analysis Notebook"
   },
   {
@@ -156,6 +163,20 @@
   {
     "objectID": "projects/project2/index.html#notebook",
     "href": "projects/project2/index.html#notebook",
+    "title": "Customer Uplift Modeling",
+    "section": "Notebook",
+    "text": "Notebook"
+  },
+  {
+    "objectID": "projects/project2/index.html#notebook-1",
+    "href": "projects/project2/index.html#notebook-1",
+    "title": "Customer Uplift Modeling",
+    "section": "Notebook",
+    "text": "Notebook"
+  },
+  {
+    "objectID": "projects/project2/index.html#notebook-2",
+    "href": "projects/project2/index.html#notebook-2",
     "title": "Customer Uplift Modeling",
     "section": "Notebook",
     "text": "Notebook\nView Analysis Notebook"
