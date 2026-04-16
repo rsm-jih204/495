@@ -61,24 +61,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ac077c1e730dfeb5e42400639d17284e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-2cd72d25c89c44177a4005c77f079f9d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ac077c1e730dfeb5e42400639d17284e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-2cd72d25c89c44177a4005c77f079f9d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -137,7 +137,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -147,7 +147,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">JH</span>
     </a>
   </div>
@@ -158,19 +158,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../resume.html"> 
+    <a class="nav-link" href="../../resume.html"> 
 <span class="menu-text">resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -271,7 +271,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="simulating-data">Simulating Data</h2>
 <p>In a real A/B test, we wouldn’t know the true values of <span class="math inline">\(\pi_A\)</span> and <span class="math inline">\(\pi_B\)</span> — that’s precisely why we’re running the test. But for the purpose of this analysis, we’ll set the true values ourselves so we can study how our estimator behaves when we know the ground truth.</p>
 <p>We set <span class="math inline">\(\pi_A = 0.22\)</span> and <span class="math inline">\(\pi_B = 0.18\)</span>, so the true effect is <span class="math inline">\(\theta = 0.04\)</span>: CTA A yields 4 more sign-ups per 100 visitors. We simulate 1,000 visitors per group (2,000 total).</p>
-<div id="11d1a423" class="cell" data-execution_count="2">
+<div id="6bb68692" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
@@ -296,7 +296,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-law-of-large-numbers">The Law of Large Numbers</h2>
 <p>The <strong>Law of Large Numbers (LLN)</strong> tells us that as we collect more data, the sample mean converges to the true population mean. In our setting, <span class="math inline">\(\hat\pi_A \to \pi_A\)</span> and <span class="math inline">\(\hat\pi_B \to \pi_B\)</span> as sample size grows — and therefore <span class="math inline">\(\hat\theta \to \theta\)</span>. The LLN is the foundational reason we trust our estimator at all: given enough data, it will get arbitrarily close to the truth.</p>
 <p>We can see this convergence directly. For each visitor <span class="math inline">\(i\)</span>, compute the difference <span class="math inline">\(X_{A,i} - X_{B,i}\)</span> (pairing A and B observations by index). Then watch the <em>running average</em> of those differences evolve as we accumulate more observations.</p>
-<div id="5905118f" class="cell" data-execution_count="3">
+<div id="879304d3" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>differences <span class="op">=</span> group_A <span class="op">-</span> group_B</span>
@@ -318,7 +318,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="hw1_completed_files/figure-html/cell-4-output-1.png" width="849" height="417" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-4-output-1.png" width="849" height="417" class="figure-img"></p>
 <figcaption>The running average of the estimated difference converges to the true value of 0.04 as sample size grows.</figcaption>
 </figure>
 </div>
@@ -330,7 +330,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="bootstrap-standard-errors">Bootstrap Standard Errors</h2>
 <p>Knowing that our estimator converges to the truth is reassuring, but it doesn’t tell us <em>how precise</em> it is for our specific sample. To communicate uncertainty, we want a <strong>confidence interval</strong> — a range of plausible values for <span class="math inline">\(\theta\)</span>.</p>
 <p>The <strong>bootstrap</strong> gives us an elegant, assumption-light way to estimate this uncertainty. The core idea: we don’t know the true population, but our sample is our best approximation of it. So we treat the sample as a stand-in for the population and repeatedly resample from it <em>with replacement</em>, computing our statistic on each resample. The variability across those resampled estimates approximates the true sampling variability of our estimator.</p>
-<div id="9f185f37" class="cell" data-execution_count="4">
+<div id="89125e93" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="dv">1000</span>  <span class="co"># number of bootstrap resamples</span></span>
@@ -373,11 +373,11 @@ Analytical SE:  0.01777
 <h2 class="anchored" data-anchor-id="the-central-limit-theorem">The Central Limit Theorem</h2>
 <p>The <strong>Central Limit Theorem (CLT)</strong> is arguably the most important result in statistics. It tells us that regardless of the shape of the underlying population distribution, the sampling distribution of the sample mean becomes approximately Normal as the sample size grows. Even though each individual observation is a 0 or 1 (very non-Normal), the <em>average</em> of many such observations is approximately bell-shaped for large <span class="math inline">\(n\)</span>.</p>
 <p>To see this in action, we simulate the sampling distribution of <span class="math inline">\(\hat\theta\)</span> for four different sample sizes.</p>
-<div id="c7a0d099" class="cell" data-execution_count="5">
+<div id="315227eb" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="hw1_completed_files/figure-html/cell-6-output-1.png" width="945" height="661" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-6-output-1.png" width="945" height="661" class="figure-img"></p>
 <figcaption>Sampling distribution of the estimated difference at four sample sizes. The distribution becomes increasingly bell-shaped as n grows — the CLT in action.</figcaption>
 </figure>
 </div>
@@ -398,7 +398,7 @@ Analytical SE:  0.01777
 <p><span class="math display">\[z = \frac{\hat\theta - 0}{SE(\hat\theta)} \;\dot\sim\; N(0,1) \quad \text{under } H_0\]</span></p>
 <p>This standardization matters because we now know exactly what distribution our test statistic follows under the null — which is what we need to compute a p-value.</p>
 <p><strong>A note on t-test vs.&nbsp;z-test.</strong> This procedure is often called a t-test. The classical t-test arises when data are Normal and variance is estimated — then the ratio follows an exact t-distribution. Our data are Bernoulli (not Normal), so we rely on the CLT for approximate Normality. For large samples, the t-distribution and standard Normal are nearly indistinguishable, so the practical difference is negligible.</p>
-<div id="4fd981b4" class="cell" data-execution_count="6">
+<div id="a6412a03" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>z_stat  <span class="op">=</span> theta_hat <span class="op">/</span> se_analytical</span>
@@ -433,7 +433,7 @@ p-value (two-sided):   0.0325</code></pre>
 <li><span class="math inline">\(\beta_0 + \beta_1 = E[Y_i \mid D_i = 1]\)</span> — mean outcome for CTA A visitors, i.e., <span class="math inline">\(\hat\pi_A\)</span></li>
 <li>Therefore <span class="math inline">\(\beta_1 = \pi_A - \pi_B = \theta\)</span>, and <span class="math inline">\(\hat\beta_1\)</span> is numerically identical to <span class="math inline">\(\hat\theta\)</span></li>
 </ol>
-<div id="2f1030fe" class="cell" data-execution_count="7">
+<div id="5887eb64" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.linalg <span class="im">import</span> lstsq</span>
@@ -472,7 +472,7 @@ p-value:     0.0327</code></pre>
 <p>Imagine your boss is eager for results. Rather than waiting for all 1,000 visitors, she proposes checking the results after every 100 visitors per group — peeking 10 times in total, and stopping early if any peek yields a significant result (p &lt; 0.05).</p>
 <p>This sounds reasonable. What’s the harm in looking?</p>
 <p>The problem is subtle but serious. Each individual test at <span class="math inline">\(\alpha = 0.05\)</span> has a 5% false positive rate. But when you conduct <strong>multiple tests on accumulating data</strong>, each peek is another opportunity to get a false positive. We can quantify this with a simulation where the <strong>null hypothesis is exactly true</strong>: <span class="math inline">\(\pi_A = \pi_B = 0.20\)</span>, so <span class="math inline">\(\theta = 0\)</span> and there is genuinely no difference.</p>
-<div id="8d2df76a" class="cell" data-execution_count="8">
+<div id="d075844b" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">99</span>)</span>
@@ -515,11 +515,11 @@ p-value:     0.0327</code></pre>
 Peeking false positive rate:      20.2%</code></pre>
 </div>
 </div>
-<div id="a7e69268" class="cell" data-execution_count="9">
+<div id="fa2f1ce7" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="hw1_completed_files/figure-html/cell-10-output-1.png" width="657" height="367" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-10-output-1.png" width="657" height="367" class="figure-img"></p>
 <figcaption>Empirical false positive rates under the null (10,000 simulations). Peeking inflates the error rate well above the nominal 5%.</figcaption>
 </figure>
 </div>

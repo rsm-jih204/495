@@ -3,12 +3,8 @@
     "listing": "/blog.html",
     "items": [
       "/blog/index.html",
-      "/blog/plots/ab-testing/hw1_completed.html"
+      "/blog/ab-testing/index.html"
     ]
-  },
-  {
-    "listing": "/blog/index.html",
-    "items": []
   },
   {
     "listing": "/projects.html",
@@ -16,5 +12,9 @@
       "/projects/project1/index.html",
       "/projects/project2/index.html"
     ]
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": []
   }
 ]
