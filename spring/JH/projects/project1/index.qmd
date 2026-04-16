@@ -1,0 +1,28 @@
+---
+title: "Customer Churn Analysis"
+description: "Analyzed customer churn patterns using Python and data analysis techniques."
+categories: [Python, Data Analysis, Machine Learning]
+image: proj1.png
+---
+
+## Overview
+
+This project analyzes customer behavior data from a mobile service provider to identify key drivers of churn.
+
+## Key Insights
+
+- Identified patterns in customer behavior associated with churn
+- Highlighted key variables influencing retention
+- Provided data-driven recommendations
+
+## Tools
+
+Python, pandas, matplotlib, Jupyter Notebook
+
+## Notebook
+
+[View Analysis Notebook](https://nbviewer.org/github/rsm-jih204/Customer-analysis/blob/main/s-mobile.ipynb)
+
+## GitHub
+
+[View Repository](https://github.com/rsm-jih204/Customer-analysis)

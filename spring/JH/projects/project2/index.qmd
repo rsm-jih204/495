@@ -1,0 +1,29 @@
+---
+title: "Customer Uplift Modeling"
+description: "Built and compared uplift models to support targeted marketing decisions."
+categories: [Python, Machine Learning, Marketing Analytics]
+image: proj2.png
+---
+
+## Overview
+
+This project focuses on uplift modeling for targeted marketing. The goal is to identify which customers are most likely to respond positively to treatment and to optimize targeting strategies.
+
+## What I did
+
+- Cleaned and prepared treatment and control group data
+- Built and compared multiple uplift models
+- Evaluated performance across logistic, neural network, random forest, and XGBoost approaches
+- Interpreted model outputs for business decision-making
+
+## Tools
+
+Python, polars, pyrsm, scikit-learn, plotnine, Jupyter Notebook
+
+## Notebook
+
+[View Analysis Notebook](https://nbviewer.org/github/rsm-jih204/Customer-analysis/blob/main/uplift.ipynb)
+
+## GitHub
+
+[View Repository](https://github.com/rsm-jih204/Customer-analysis)

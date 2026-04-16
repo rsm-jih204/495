@@ -1,0 +1,13 @@
+---
+title: "Jiahui Huang"
+image: "image/IMG_3788.png"
+about:
+  template: jolla
+  links:
+    - icon: envelope
+      href: mailto:jih204@ucsd.edu
+    - icon: linkedin
+      href: https://www.linkedin.com/in/jiahui-kate
+---
+
+Welcome to my website!

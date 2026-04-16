@@ -1,0 +1,14 @@
+---
+title: ""
+listing:
+  contents: blog
+  sort: "date desc"
+  type: default
+  date-format: "MMMM DD, YYYY"
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+---
+
+## 2025
