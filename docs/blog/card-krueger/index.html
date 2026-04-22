@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="633c1a37" class="cell" data-execution_count="1">
+<div id="671357fb" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -298,7 +298,7 @@ Balanced sample: 351</code></pre>
 <section id="replication-table-2-key-variable-means" class="level2">
 <h2 class="anchored" data-anchor-id="replication-table-2-key-variable-means">Replication: Table 2 — Key Variable Means</h2>
 <p>Before diving into the DiD, we check that the two groups (NJ and PA) looked similar at baseline — an important validity check. The table below mirrors Table 2 from the paper.</p>
-<div id="73a1d23e" class="cell" data-execution_count="2">
+<div id="4e451375" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mean_se(series):</span>
@@ -349,7 +349,7 @@ Starting wage — Wave 2    5.08 (0.01)   4.62 (0.04)   19.7</code></pre>
 <section id="replication-table-3-the-core-did" class="level2">
 <h2 class="anchored" data-anchor-id="replication-table-3-the-core-did">Replication: Table 3 — The Core DiD</h2>
 <p>This is the heart of the paper. We compare employment changes in New Jersey vs.&nbsp;Pennsylvania.</p>
-<div id="8a68a4e7" class="cell" data-execution_count="3">
+<div id="ae218b33" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Compute means and SEs ──────────────────────────────────────────────────</span></span>
@@ -425,7 +425,7 @@ DiD t-statistic: 2.05  (Paper: 2.03)</code></pre>
 <section id="replication-table-4-col-i-regression-adjusted-did" class="level2">
 <h2 class="anchored" data-anchor-id="replication-table-4-col-i-regression-adjusted-did">Replication: Table 4 Col (i) — Regression-Adjusted DiD</h2>
 <p>The DiD can also be estimated by regressing the change in employment on a New Jersey dummy. This allows us to add controls for chain type.</p>
-<div id="400c8f21" class="cell" data-execution_count="4">
+<div id="9855ab7f" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Table 4 regressions ────────────────────────────────────────────────────</span></span>
@@ -474,7 +474,7 @@ confirming the NJ result is not explained by chain composition.</code></pre>
 <section id="additional-analysis-visualizing-the-did" class="level2">
 <h2 class="anchored" data-anchor-id="additional-analysis-visualizing-the-did">Additional Analysis: Visualizing the DiD</h2>
 <p><em>(This section goes beyond the paper to present the core finding graphically.)</em></p>
-<div id="983754b1" class="cell" data-execution_count="5">
+<div id="d031d9b4" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
