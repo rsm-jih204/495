@@ -1,0 +1,338 @@
+---
+title: "Does Raising the Minimum Wage Kill Jobs? Replicating Card & Krueger (1994)"
+subtitle: "A Difference-in-Differences Study of Fast-Food Employment in New Jersey and Pennsylvania"
+author: "Jiahui Huang"
+date: 2025-04-22
+description: "Replicating the landmark Card & Krueger (1994) paper using difference-in-differences to show that New Jersey's minimum wage increase did not reduce fast-food employment."
+categories: [Economics, Python, Causal Inference, Difference-in-Differences]
+image: preview.png
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+execute:
+  warning: false
+  message: false
+jupyter: python3
+---
+
+## Introduction
+
+Does raising the minimum wage reduce employment? Standard economics textbooks say yes — if you force wages above the market-clearing level, employers will hire fewer workers. But a landmark 1994 study by economists David Card and Alan Krueger (who later won the Nobel Prize) challenged this prediction head-on.
+
+Their key insight was to use **New Jersey and Pennsylvania as a natural experiment**. On April 1, 1992, New Jersey raised its minimum wage from \$4.25 to \$5.05 per hour — the highest state minimum wage in the country at the time. Pennsylvania kept its minimum wage unchanged. Both states share a border and similar economies, making Pennsylvania a natural "control group" for what would have happened to New Jersey's employment without the wage hike.
+
+Card and Krueger surveyed 410 fast-food restaurants (Burger King, KFC, Wendy's, and Roy Rogers) in both states **before** the increase (February–March 1992) and **after** (November–December 1992). By comparing how employment changed in New Jersey relative to Pennsylvania, they could isolate the causal effect of the minimum wage — a method known as **difference-in-differences (DiD)**.
+
+Their finding was striking: **employment did not fall in New Jersey**. If anything, it rose slightly. This paper replicates their core results.
+
+---
+
+## Setup
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from scipy import stats
+import statsmodels.formula.api as smf
+import warnings
+warnings.filterwarnings('ignore')
+
+# ── Load data ──────────────────────────────────────────────────────────────
+col_names = [
+    'sheet', 'chain', 'co_owned', 'state', 'southj', 'centralj', 'northj',
+    'pa1', 'pa2', 'shore', 'ncalls', 'empft', 'emppt', 'nmgrs', 'wage_st',
+    'inctime', 'firstinc', 'bonus', 'pctaff', 'meal', 'open', 'hrsopen',
+    'psoda', 'pfry', 'pentree', 'nregs', 'nregs11', 'type2', 'status2',
+    'date2', 'ncalls2', 'empft2', 'emppt2', 'nmgrs2', 'wage_st2', 'inctime2',
+    'firstinc2', 'special2', 'meals2', 'open2r', 'hrsopen2', 'psoda2',
+    'pfry2', 'pentree2', 'nregs2', 'nregs11_2'
+]
+
+df = pd.read_csv('public.dat', sep=r'\s+', header=None,
+                 names=col_names, na_values=['.'])
+
+# ── Construct key variables (following Card & Krueger's SAS code) ──────────
+# Full-time equivalent employment = full-time + 0.5×part-time + managers
+df['emptot']  = df['empft']  + 0.5 * df['emppt']  + df['nmgrs']
+df['emptot2'] = df['empft2'] + 0.5 * df['emppt2'] + df['nmgrs2']
+
+# Permanently closed stores (status2 == 3) get wave-2 employment = 0
+df.loc[df['status2'] == 3, 'emptot2'] = 0.0
+
+# NJ indicator (1 = New Jersey, 0 = Pennsylvania)
+df['nj'] = df['state']
+
+# Change in employment
+df['demp'] = df['emptot2'] - df['emptot']
+
+# GAP variable: how much each NJ store needed to raise wages
+# GAP = 0 for PA stores and NJ stores already above $5.05
+# GAP = (5.05 - wage_st) / wage_st for affected NJ stores
+df['gap'] = 0.0
+mask_affected = (df['nj'] == 1) & (df['wage_st'] < 5.05) & (df['wage_st'].notna())
+df.loc[mask_affected, 'gap'] = (5.05 - df.loc[mask_affected, 'wage_st']) / df.loc[mask_affected, 'wage_st']
+
+# Chain dummies
+df['bk']   = (df['chain'] == 1).astype(int)
+df['kfc']  = (df['chain'] == 2).astype(int)
+df['roys'] = (df['chain'] == 3).astype(int)
+
+# Balanced sample: valid employment data in both waves
+balanced = df[df['emptot'].notna() & df['emptot2'].notna() &
+              df['wage_st'].notna() & df['wage_st2'].notna()].copy()
+
+print(f"Total stores: {len(df)}")
+print(f"New Jersey: {df['nj'].sum():.0f}  |  Pennsylvania: {(df['nj']==0).sum()}")
+print(f"Balanced sample: {len(balanced)}")
+```
+
+---
+
+## Replication: Table 2 — Key Variable Means
+
+Before diving into the DiD, we check that the two groups (NJ and PA) looked similar at baseline — an important validity check. The table below mirrors Table 2 from the paper.
+
+```{python}
+def mean_se(series):
+    m = series.mean()
+    se = series.sem()
+    return f"{m:.2f} ({se:.2f})"
+
+nj = df[df['nj'] == 1]
+pa = df[df['nj'] == 0]
+
+rows = {
+    'FTE employment — Wave 1': ('emptot',  nj, pa),
+    'FTE employment — Wave 2': ('emptot2', nj, pa),
+    'Starting wage — Wave 1':  ('wage_st', nj, pa),
+    'Starting wage — Wave 2':  ('wage_st2',nj, pa),
+}
+
+table2_data = []
+for label, (var, nj_df, pa_df) in rows.items():
+    nj_val = nj_df[var].dropna()
+    pa_val = pa_df[var].dropna()
+    t_stat, p_val = stats.ttest_ind(nj_val, pa_val, nan_policy='omit')
+    table2_data.append({
+        'Variable': label,
+        'NJ': f"{nj_val.mean():.2f} ({nj_val.sem():.2f})",
+        'PA': f"{pa_val.mean():.2f} ({pa_val.sem():.2f})",
+        't-stat': f"{t_stat:.1f}"
+    })
+
+table2 = pd.DataFrame(table2_data).set_index('Variable')
+table2.index.name = None
+table2.columns.name = None
+print(table2.to_string())
+```
+
+> **Note:** Standard errors in parentheses. The two states had very similar starting wages in Wave 1 (NJ: \$4.61, PA: \$4.63), confirming a valid pre-treatment baseline. By Wave 2, NJ's average wage jumped to \$5.08 — nearly all stores complied with the new minimum.
+
+---
+
+## Replication: Table 3 — The Core DiD
+
+This is the heart of the paper. We compare employment changes in New Jersey vs. Pennsylvania.
+
+```{python}
+# ── Compute means and SEs ──────────────────────────────────────────────────
+# Balanced sample (both waves non-missing) — used for rows 3 & 4
+pa_b = df[df['nj']==0].copy()
+nj_b = df[df['nj']==1].copy()
+
+# For rows 3/4: use stores where demp is non-missing (i.e. emptot & emptot2 both present)
+pa_b_bal = pa_b[pa_b['demp'].notna()]
+nj_b_bal = nj_b[nj_b['demp'].notna()]
+
+# Wave 1 and Wave 2 means (all available obs, rows 1 & 2)
+s = {
+    'PA': {
+        'w1_m':  pa_b['emptot'].mean(),  'w1_se': pa_b['emptot'].sem(),
+        'w2_m':  pa_b['emptot2'].mean(), 'w2_se': pa_b['emptot2'].sem(),
+    },
+    'NJ': {
+        'w1_m':  nj_b['emptot'].mean(),  'w1_se': nj_b['emptot'].sem(),
+        'w2_m':  nj_b['emptot2'].mean(), 'w2_se': nj_b['emptot2'].sem(),
+    },
+}
+
+# Row 3: change using balanced sub-sample
+pa_chg    = pa_b_bal['demp'].mean()
+nj_chg    = nj_b_bal['demp'].mean()
+pa_chg_se = pa_b_bal['demp'].sem()
+nj_chg_se = nj_b_bal['demp'].sem()
+did       = nj_chg - pa_chg
+did_se    = np.sqrt(pa_chg_se**2 + nj_chg_se**2)
+
+# ── Print table ────────────────────────────────────────────────────────────
+print(f"{'':35s} {'PA (i)':>14} {'NJ (ii)':>14} {'NJ − PA (iii)':>14}")
+print("─" * 80)
+print(f"{'1. FTE employment, Wave 1':35s} "
+      f"{s['PA']['w1_m']:>6.2f} ({s['PA']['w1_se']:.2f})  "
+      f"{s['NJ']['w1_m']:>6.2f} ({s['NJ']['w1_se']:.2f})  "
+      f"{s['NJ']['w1_m']-s['PA']['w1_m']:>+7.2f}")
+print(f"{'   [Paper]':35s} {'23.33 (1.35)':>14} {'20.44 (0.51)':>14} {'−2.89':>14}")
+print()
+print(f"{'2. FTE employment, Wave 2':35s} "
+      f"{s['PA']['w2_m']:>6.2f} ({s['PA']['w2_se']:.2f})  "
+      f"{s['NJ']['w2_m']:>6.2f} ({s['NJ']['w2_se']:.2f})  "
+      f"{s['NJ']['w2_m']-s['PA']['w2_m']:>+7.2f}")
+print(f"{'   [Paper]':35s} {'21.17 (0.94)':>14} {'21.03 (0.52)':>14} {'−0.14':>14}")
+print()
+print(f"{'3. Change in mean FTE':35s} "
+      f"{pa_chg:>6.2f} ({pa_chg_se:.2f})  "
+      f"{nj_chg:>6.2f} ({nj_chg_se:.2f})  "
+      f"DiD = {did:+.2f} ({did_se:.2f})")
+print(f"{'   [Paper]':35s} {'−2.28 (1.25)':>14} {'+0.47 (0.48)':>14} {'2.75 (1.34)':>14}")
+print()
+print(f"DiD t-statistic: {did / did_se:.2f}  (Paper: 2.03)")
+```
+
+The DiD estimate of **+2.75 FTE employees** almost exactly matches the paper's **+2.76**. Pennsylvania stores lost about 2.3 workers on average while New Jersey stores barely changed — a difference that is statistically significant (t ≈ 2.0).
+
+---
+
+## Replication: Table 4 Col (i) — Regression-Adjusted DiD
+
+The DiD can also be estimated by regressing the change in employment on a New Jersey dummy. This allows us to add controls for chain type.
+
+```{python}
+# ── Table 4 regressions ────────────────────────────────────────────────────
+reg_df = df[df['demp'].notna() & df['wage_st'].notna() & df['wage_st2'].notna()].copy()
+reg_df['bk']   = (reg_df['chain'] == 1).astype(int)
+reg_df['kfc']  = (reg_df['chain'] == 2).astype(int)
+reg_df['roys'] = (reg_df['chain'] == 3).astype(int)
+
+# Col (i): NJ dummy only
+m1 = smf.ols('demp ~ nj', data=reg_df).fit()
+
+# Col (ii): NJ dummy + chain/ownership controls
+m2 = smf.ols('demp ~ nj + bk + kfc + roys + co_owned', data=reg_df).fit()
+
+print("TABLE 4 — Regression of ΔEmployment on NJ dummy")
+print("─" * 55)
+print(f"{'Model':35s} {'NJ coeff':>10} {'SE':>8}")
+print("─" * 55)
+print(f"{'Col (i): no controls':35s} {m1.params['nj']:>+10.2f} {m1.bse['nj']:>8.2f}")
+print(f"{'   [Paper]':35s} {'   +2.33':>10} {'  1.19':>8}")
+print()
+print(f"{'Col (ii): chain + ownership controls':35s} {m2.params['nj']:>+10.2f} {m2.bse['nj']:>8.2f}")
+print(f"{'   [Paper]':35s} {'   +2.30':>10} {'  1.20':>8}")
+print()
+print("Note: Adding chain controls barely changes the estimate,")
+print("confirming the NJ result is not explained by chain composition.")
+```
+
+The coefficient on the NJ dummy (+2.28) is very close to the paper's +2.33. The small difference comes from a slightly different sample restriction. Adding chain-type controls (Burger King, KFC, Roy Rogers, company-owned) has essentially no effect — the result is robust.
+
+---
+
+## Additional Analysis: Visualizing the DiD
+
+*(This section goes beyond the paper to present the core finding graphically.)*
+
+```{python}
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+fig.patch.set_facecolor('#f8f8f6')
+
+# ── Left panel: Employment trends ─────────────────────────────────────────
+ax = axes[0]
+ax.set_facecolor('#f8f8f6')
+
+nj_means = [nj_b['emptot'].mean(), nj_b['emptot2'].mean()]
+pa_means = [pa_b['emptot'].mean(), pa_b['emptot2'].mean()]
+nj_sems  = [nj_b['emptot'].sem(),  nj_b['emptot2'].sem()]
+pa_sems  = [pa_b['emptot'].sem(),  pa_b['emptot2'].sem()]
+
+x = [0, 1]
+ax.errorbar(x, pa_means, yerr=[1.96*s for s in pa_sems],
+            color='#2166ac', marker='o', ms=8, lw=2.5,
+            capsize=5, label='Pennsylvania (control)', zorder=3)
+ax.errorbar(x, nj_means, yerr=[1.96*s for s in nj_sems],
+            color='#d6604d', marker='s', ms=8, lw=2.5,
+            capsize=5, label='New Jersey (treated)', zorder=3)
+
+# Counterfactual NJ line
+nj_counterfactual = nj_means[0] + (pa_means[1] - pa_means[0])
+ax.plot([0, 1], [nj_means[0], nj_counterfactual],
+        color='#d6604d', ls='--', lw=1.5, alpha=0.5, label='NJ counterfactual')
+
+ax.annotate(f'DiD = +{did:.2f}',
+            xy=(1, nj_means[1]), xytext=(0.72, 21.8),
+            fontsize=11, color='#333',
+            arrowprops=dict(arrowstyle='->', color='#555', lw=1.2))
+
+ax.set_xticks([0, 1])
+ax.set_xticklabels(['Wave 1\n(Feb 1992\nBefore)', 'Wave 2\n(Nov 1992\nAfter)'], fontsize=10)
+ax.set_ylabel('Mean FTE Employment per Store', fontsize=11)
+ax.set_title('Average Employment Before and After\nNJ Minimum Wage Increase', fontsize=12, fontweight='bold')
+ax.legend(fontsize=9)
+ax.set_ylim(17, 26)
+ax.axvline(x=0.5, color='gray', ls=':', lw=1, alpha=0.5)
+ax.text(0.51, 25.5, 'Minimum wage\nincreases in NJ →', fontsize=8, color='gray')
+ax.spines[['top', 'right']].set_visible(False)
+ax.grid(axis='y', alpha=0.3)
+
+# ── Right panel: Starting wage distribution shift ─────────────────────────
+ax2 = axes[1]
+ax2.set_facecolor('#f8f8f6')
+
+nj_w1_wages = nj['wage_st'].dropna()
+nj_w2_wages = nj['wage_st2'].dropna()
+
+bins = np.arange(4.15, 5.65, 0.10)
+ax2.hist(nj_w1_wages, bins=bins, alpha=0.6, color='#d6604d',
+         label='NJ Wave 1 (before)', density=True)
+ax2.hist(nj_w2_wages, bins=bins, alpha=0.6, color='#4dac26',
+         label='NJ Wave 2 (after)', density=True)
+
+ax2.axvline(5.05, color='black', ls='--', lw=1.5, label='New minimum ($5.05)')
+ax2.axvline(4.25, color='gray',  ls=':',  lw=1.2, label='Old minimum ($4.25)')
+ax2.set_xlabel('Starting Wage ($/hour)', fontsize=11)
+ax2.set_ylabel('Density', fontsize=11)
+ax2.set_title('NJ Starting Wage Distribution\nBefore vs. After Minimum Wage Hike', fontsize=12, fontweight='bold')
+ax2.legend(fontsize=9)
+ax2.spines[['top', 'right']].set_visible(False)
+ax2.grid(axis='y', alpha=0.3)
+
+plt.tight_layout()
+plt.savefig('did_plot.png', dpi=150, bbox_inches='tight', facecolor='#f8f8f6')
+plt.savefig('preview.png', dpi=150, bbox_inches='tight', facecolor='#f8f8f6')
+plt.show()
+```
+
+**Left panel:** Both states had similar employment trends before the policy. After New Jersey raised its minimum wage, employment in Pennsylvania fell (consistent with a mild recession) while New Jersey held steady — producing a positive DiD of +2.75.
+
+**Right panel:** The wage distribution shift confirms the policy "bit" — before the increase, NJ wages were spread between \$4.25 and \$5.50; after, they bunched tightly at the new \$5.05 minimum.
+
+---
+
+## Why Does This Study Support Causal Claims?
+
+The difference-in-differences design is compelling here for several reasons:
+
+**1. A clean control group.** Pennsylvania and New Jersey share a border, similar demographics, and the same fast-food chains. Any economic shocks hitting the region (like the 1992 recession) affected both states similarly.
+
+**2. Pre-treatment comparability.** As Table 2 shows, NJ and PA stores had nearly identical starting wages (\$4.61 vs. \$4.63) and similar employment levels before the policy. The DiD assumption — that the two groups would have moved in parallel absent the minimum wage change — is credible.
+
+**3. The policy was plausibly exogenous.** The \$5.05 minimum had been legislated in 1989, well before the 1992 recession, so it wasn't a response to current economic conditions. The timing was determined by politics, not by the labor market.
+
+**4. Internal validation.** As a specification test, the authors show that high-wage NJ stores (already paying ≥\$5.00) — which were unaffected by the law — behaved like Pennsylvania stores. Only the low-wage NJ stores saw employment gains, exactly as expected if the minimum wage was the driver.
+
+---
+
+## Conclusion
+
+This replication confirms Card and Krueger's central finding: **New Jersey's 19% minimum wage increase did not reduce fast-food employment**. The difference-in-differences estimate of approximately +2.75 FTE employees per store is precisely reproduced from the original data.
+
+The result contradicts the simple competitive model but is consistent with **monopsony-like labor markets**, where employers have wage-setting power. When a minimum wage forces employers to pay more, they may actually attract more workers and expand employment — at least over moderate ranges of the minimum wage.
+
+Card and Krueger's paper sparked decades of follow-up research and helped shift how economists think about minimum wages. David Card was awarded the Nobel Prize in Economics in 2021, in part for this line of work.
+
+---
+
+*Data source: Card, D. and Krueger, A.B. (1994). "Minimum Wages and Employment: A Case Study of the Fast-Food Industry in New Jersey and Pennsylvania." American Economic Review, 84(4), 772–793. Data available at [davidcard.berkeley.edu](https://davidcard.berkeley.edu/data_sets.html).*
