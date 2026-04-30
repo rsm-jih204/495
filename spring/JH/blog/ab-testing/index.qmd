@@ -70,7 +70,7 @@ The rest of this post is about understanding the behavior of this estimator: whe
 
 ## Simulating Data
 
-In a real A/B test, we wouldn't know the true values of $\pi_A$ and $\pi_B$ — that's precisely why we're running the test. But for the purpose of this analysis, we'll set the true values ourselves so we can study how our estimator behaves when we know the ground truth.
+In a real A/B test, we would not know the true values of $\pi_A$ and $\pi_B$ — that's precisely why we're running the test. But for the purpose of this analysis, we'll set the true values ourselves so we can study how our estimator behaves when we know the ground truth.
 
 We set $\pi_A = 0.22$ and $\pi_B = 0.18$, so the true effect is $\theta = 0.04$: CTA A yields 4 more sign-ups per 100 visitors. We simulate 1,000 visitors per group (2,000 total).
 
