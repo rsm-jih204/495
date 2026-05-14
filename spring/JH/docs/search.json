@@ -138,5 +138,110 @@
     "title": "Does Blueprinty Actually Increase Patent Success?",
     "section": "Key Takeaways",
     "text": "Key Takeaways\n\n\n\n\n\n\n\nFinding\nResult\n\n\n\n\nRaw patent mean — customers\n4.13\n\n\nRaw patent mean — non-customers\n3.47\n\n\nEstimated ATE (controlling for age & region)\n0.793 additional patents\n\n\nRelative gain\n~23.1%\n\n\nCustomer coefficient (GLM)\nPositive, statistically significant\n\n\n\n\nBlueprinty customers show meaningfully higher predicted patent output even after controlling for firm age and regional location.\nThe effect is correlational, not causal. This is an observational study — firms are not randomly assigned to use the software.\nUnobserved confounders remain a threat. Firms that self-select into buying the software may differ in unmeasured ways (R&D investment, management quality, IP strategy) that independently drive patent success.\nReverse causality is possible. Firms already planning many patent filings may be more likely to invest in patent-preparation software, rather than the software causing the higher count.\n\nIn summary, the Poisson regression analysis produces a positive, statistically significant, and economically meaningful association between Blueprinty software adoption and patent awards. This evidence is consistent with — but does not prove — the marketing claim that Blueprinty’s software helps engineering firms win more patents."
+  },
+  {
+    "objectID": "projects/project1/index.html",
+    "href": "projects/project1/index.html",
+    "title": "Customer Churn Analysis",
+    "section": "",
+    "text": "This project analyzes customer behavior data from a mobile service provider to identify key drivers of churn."
+  },
+  {
+    "objectID": "projects/project1/index.html#overview",
+    "href": "projects/project1/index.html#overview",
+    "title": "Customer Churn Analysis",
+    "section": "",
+    "text": "This project analyzes customer behavior data from a mobile service provider to identify key drivers of churn."
+  },
+  {
+    "objectID": "projects/project1/index.html#key-insights",
+    "href": "projects/project1/index.html#key-insights",
+    "title": "Customer Churn Analysis",
+    "section": "Key Insights",
+    "text": "Key Insights\n\nIdentified patterns in customer behavior associated with churn\nHighlighted key variables influencing retention\nProvided data-driven recommendations"
+  },
+  {
+    "objectID": "projects/project1/index.html#tools",
+    "href": "projects/project1/index.html#tools",
+    "title": "Customer Churn Analysis",
+    "section": "Tools",
+    "text": "Tools\nPython, pandas, matplotlib, Jupyter Notebook"
+  },
+  {
+    "objectID": "projects/project1/index.html#notebook",
+    "href": "projects/project1/index.html#notebook",
+    "title": "Customer Churn Analysis",
+    "section": "Notebook",
+    "text": "Notebook"
+  },
+  {
+    "objectID": "projects/project1/index.html#notebook-1",
+    "href": "projects/project1/index.html#notebook-1",
+    "title": "Customer Churn Analysis",
+    "section": "Notebook",
+    "text": "Notebook\nView Analysis Notebook"
+  },
+  {
+    "objectID": "projects/project1/index.html#github",
+    "href": "projects/project1/index.html#github",
+    "title": "Customer Churn Analysis",
+    "section": "GitHub",
+    "text": "GitHub\nView Repository"
+  },
+  {
+    "objectID": "projects/project2/index.html",
+    "href": "projects/project2/index.html",
+    "title": "Customer Uplift Modeling",
+    "section": "",
+    "text": "This project focuses on uplift modeling for targeted marketing. The goal is to identify which customers are most likely to respond positively to treatment and to optimize targeting strategies."
+  },
+  {
+    "objectID": "projects/project2/index.html#overview",
+    "href": "projects/project2/index.html#overview",
+    "title": "Customer Uplift Modeling",
+    "section": "",
+    "text": "This project focuses on uplift modeling for targeted marketing. The goal is to identify which customers are most likely to respond positively to treatment and to optimize targeting strategies."
+  },
+  {
+    "objectID": "projects/project2/index.html#what-i-did",
+    "href": "projects/project2/index.html#what-i-did",
+    "title": "Customer Uplift Modeling",
+    "section": "What I did",
+    "text": "What I did\n\nCleaned and prepared treatment and control group data\nBuilt and compared multiple uplift models\nEvaluated performance across logistic, neural network, random forest, and XGBoost approaches\nInterpreted model outputs for business decision-making"
+  },
+  {
+    "objectID": "projects/project2/index.html#tools",
+    "href": "projects/project2/index.html#tools",
+    "title": "Customer Uplift Modeling",
+    "section": "Tools",
+    "text": "Tools\nPython, polars, pyrsm, scikit-learn, plotnine, Jupyter Notebook"
+  },
+  {
+    "objectID": "projects/project2/index.html#notebook",
+    "href": "projects/project2/index.html#notebook",
+    "title": "Customer Uplift Modeling",
+    "section": "Notebook",
+    "text": "Notebook"
+  },
+  {
+    "objectID": "projects/project2/index.html#notebook-1",
+    "href": "projects/project2/index.html#notebook-1",
+    "title": "Customer Uplift Modeling",
+    "section": "Notebook",
+    "text": "Notebook"
+  },
+  {
+    "objectID": "projects/project2/index.html#notebook-2",
+    "href": "projects/project2/index.html#notebook-2",
+    "title": "Customer Uplift Modeling",
+    "section": "Notebook",
+    "text": "Notebook\nView Analysis Notebook"
+  },
+  {
+    "objectID": "projects/project2/index.html#github",
+    "href": "projects/project2/index.html#github",
+    "title": "Customer Uplift Modeling",
+    "section": "GitHub",
+    "text": "GitHub\nView Repository"
   }
 ]
