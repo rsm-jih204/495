@@ -21,7 +21,9 @@ Python, pandas, matplotlib, Jupyter Notebook
 
 ## Notebook
 
-[View Analysis Notebook](https://nbviewer.org/github/rsm-jih204/Customer-analysis/blob/main/s-mobile.ipynb)
+## Notebook
+
+[View Analysis Notebook](https://github.com/rsm-jih204/Customer-analysis/blob/main/s-mobile.ipynb)
 
 ## GitHub
 

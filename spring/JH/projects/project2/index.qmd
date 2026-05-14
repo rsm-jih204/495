@@ -22,7 +22,11 @@ Python, polars, pyrsm, scikit-learn, plotnine, Jupyter Notebook
 
 ## Notebook
 
-[View Analysis Notebook](https://nbviewer.org/github/rsm-jih204/Customer-analysis/blob/main/uplift.ipynb)
+## Notebook
+
+## Notebook
+
+[View Analysis Notebook](https://github.com/rsm-jih204/Customer-analysis/blob/main/uplift.ipynb)
 
 ## GitHub
 

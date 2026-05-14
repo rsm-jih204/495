@@ -2,9 +2,16 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/blog/index.html",
+      "/blog/hw3-blueprinty/index.html",
       "/blog/card-krueger/index.html",
       "/blog/ab-testing/index.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/project1/index.html",
+      "/projects/project2/index.html"
     ]
   }
 ]
