@@ -2,7 +2,8 @@
 title: "Does Blueprinty Actually Increase Patent Success?"
 subtitle: "A Poisson Regression and Maximum Likelihood Estimation Case Study"
 author: "Jiahui Huang"
-date: May 13, 2026
+date: "2026-05-13"
+categories: [Python, Statistics]
 format:
   html:
     toc: true
