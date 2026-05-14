@@ -63,7 +63,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -107,9 +107,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -267,7 +264,7 @@ window.Quarto = {
 </section>
 <section id="exploring-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
-<div id="50c4f3f2" class="cell" data-execution_count="1">
+<div id="43beb013" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -279,66 +276,11 @@ window.Quarto = {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"blueprinty.csv"</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">patents</th>
-<th data-quarto-table-cell-role="th">region</th>
-<th data-quarto-table-cell-role="th">age</th>
-<th data-quarto-table-cell-role="th">iscustomer</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>0</td>
-<td>Midwest</td>
-<td>32.5</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>3</td>
-<td>Southwest</td>
-<td>37.5</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>4</td>
-<td>Northwest</td>
-<td>27.0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>3</td>
-<td>Northeast</td>
-<td>24.5</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>3</td>
-<td>Southwest</td>
-<td>37.0</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
 </div>
 <section id="patent-counts-by-customer-status" class="level3">
 <h3 class="anchored" data-anchor-id="patent-counts-by-customer-status">Patent Counts by Customer Status</h3>
 <p>We begin by comparing the distribution of patent counts between Blueprinty customers (<code>iscustomer = 1</code>) and non-customers (<code>iscustomer = 0</code>).</p>
-<div id="1d578864" class="cell" data-execution_count="2">
+<div id="98644185" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>customers    <span class="op">=</span> df[df[<span class="st">"iscustomer"</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">"patents"</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>noncustomers <span class="op">=</span> df[df[<span class="st">"iscustomer"</span>] <span class="op">==</span> <span class="dv">0</span>][<span class="st">"patents"</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -348,62 +290,15 @@ window.Quarto = {
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean patents — Customers:     </span><span class="sc">{</span>mean_cust<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean patents — Non-customers: </span><span class="sc">{</span>mean_noncust<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Difference:                   </span><span class="sc">{</span>mean_cust <span class="op">-</span> mean_noncust<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Mean patents — Customers:     4.133
-Mean patents — Non-customers: 3.473
-Difference:                   0.660</code></pre>
 </div>
-</div>
-<div id="abbc49ad" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-4-output-1.png" width="1045" height="440" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The two histograms reveal a clear pattern: Blueprinty customers tend to receive more patents on average (<strong>4.13</strong> vs.&nbsp;<strong>3.47</strong> for non-customers, a difference of roughly <strong>0.66</strong> patents). Both distributions are right-skewed — most firms earn relatively few patents while a small number earn many. However, this raw difference does not establish causation; it may partly reflect systematic differences in who chooses to use Blueprinty.</p>
+<p>The two histograms reveal a clear pattern: Blueprinty customers tend to receive more patents on average (<strong><code>{python} f"{mean_cust:.2f}"</code></strong> vs.&nbsp;<strong><code>{python} f"{mean_noncust:.2f}"</code></strong> for non-customers, a difference of roughly <strong><code>{python} f"{mean_cust - mean_noncust:.2f}"</code></strong> patents). Both distributions are right-skewed — most firms earn relatively few patents while a small number earn many. However, this raw difference does not establish causation; it may partly reflect systematic differences in who chooses to use Blueprinty.</p>
 </section>
 <section id="regional-distribution-by-customer-status" class="level3">
 <h3 class="anchored" data-anchor-id="regional-distribution-by-customer-status">Regional Distribution by Customer Status</h3>
-<div id="66c94a59" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-5-output-1.png" width="853" height="421" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Customer share within each region:
-           Non-customer  Customer
-region                           
-Midwest           0.835     0.165
-Northeast         0.454     0.546
-Northwest         0.845     0.155
-South             0.817     0.183
-Southwest         0.825     0.175</code></pre>
-</div>
-</div>
 <p>The regional breakdown reveals a meaningful imbalance: the <strong>Northeast</strong> is substantially over-represented among Blueprinty customers relative to non-customers, while the <strong>South</strong> and <strong>Midwest</strong> show lower customer penetration. This matters because certain regions may have stronger patent cultures, better access to legal resources, or more IP-intensive industries — all of which could independently boost patent counts. Ignoring regional differences would cause us to conflate a regional effect with a software effect.</p>
 </section>
 <section id="firm-age-by-customer-status" class="level3">
 <h3 class="anchored" data-anchor-id="firm-age-by-customer-status">Firm Age by Customer Status</h3>
-<div id="6f97c7a9" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-6-output-1.png" width="1045" height="440" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Mean age — Customers:     26.90
-Mean age — Non-customers: 26.10</code></pre>
-</div>
-</div>
 <p>Blueprinty customers tend to be <strong>younger firms</strong> on average than non-customers. This is a potentially important confound: younger firms might be more tech-savvy and adopt new software readily, but older firms accumulate more patent experience over time. Either way, controlling for age is essential before drawing conclusions about the software’s effect.</p>
 <hr>
 </section>
@@ -432,32 +327,23 @@ f(Y_i \mid \lambda) = \frac{e^{-\lambda}\,\lambda^{Y_i}}{Y_i!}, \qquad Y_i \in \
 </section>
 <section id="coding-the-log-likelihood" class="level3">
 <h3 class="anchored" data-anchor-id="coding-the-log-likelihood">Coding the Log-Likelihood</h3>
-<div id="80016f48" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poisson_loglikelihood(lam, Y):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Log-likelihood of Poisson(lambda) given observed counts Y.</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">    lam : scalar, the rate parameter (must be &gt; 0)</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Y   : array-like of non-negative integer counts</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> np.asarray(Y)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lam <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span>np.inf</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    n  <span class="op">=</span> <span class="bu">len</span>(Y)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    ll <span class="op">=</span> <span class="op">-</span>n <span class="op">*</span> lam <span class="op">+</span> np.<span class="bu">sum</span>(Y) <span class="op">*</span> np.log(lam) <span class="op">-</span> np.<span class="bu">sum</span>(gammaln(Y <span class="op">+</span> <span class="dv">1</span>))</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ll</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="18cc7a94" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poisson_loglikelihood(lam, Y):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Log-likelihood of Poisson(lambda) given observed counts Y.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">    lam : scalar, the rate parameter (must be &gt; 0)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Y   : array-like of non-negative integer counts</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> np.asarray(Y)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lam <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span>np.inf</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    n  <span class="op">=</span> <span class="bu">len</span>(Y)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    ll <span class="op">=</span> <span class="op">-</span>n <span class="op">*</span> lam <span class="op">+</span> np.<span class="bu">sum</span>(Y) <span class="op">*</span> np.log(lam) <span class="op">-</span> np.<span class="bu">sum</span>(gammaln(Y <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ll</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="visualising-the-log-likelihood" class="level3">
 <h3 class="anchored" data-anchor-id="visualising-the-log-likelihood">Visualising the Log-Likelihood</h3>
-<div id="3094d227" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-8-output-1.png" width="854" height="422" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 <p>The log-likelihood curve is <strong>concave and unimodal</strong>: it rises from the left, reaches a single peak, then falls away. The peak aligns precisely with the sample mean <span class="math inline">\(\bar{Y}\)</span> — not a coincidence, as we show next.</p>
 </section>
 <section id="analytical-mle" class="level3">
@@ -472,26 +358,21 @@ f(Y_i \mid \lambda) = \frac{e^{-\lambda}\,\lambda^{Y_i}}{Y_i!}, \qquad Y_i \in \
 </section>
 <section id="numerical-mle-via-scipy.optimize" class="level3">
 <h3 class="anchored" data-anchor-id="numerical-mle-via-scipy.optimize">Numerical MLE via <code>scipy.optimize</code></h3>
-<div id="c388bc10" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Y_obs <span class="op">=</span> df[<span class="st">"patents"</span>].values</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>result_scalar <span class="op">=</span> minimize_scalar(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> lam: <span class="op">-</span>poisson_loglikelihood(lam, Y_obs),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    bounds<span class="op">=</span>(<span class="fl">0.01</span>, <span class="dv">20</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"bounded"</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>lambda_mle  <span class="op">=</span> result_scalar.x</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>lambda_ybar <span class="op">=</span> Y_obs.mean()</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Numerical MLE:  λ̂ = </span><span class="sc">{</span>lambda_mle<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sample mean  Ȳ  = </span><span class="sc">{</span>lambda_ybar<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Difference:       </span><span class="sc">{</span><span class="bu">abs</span>(lambda_mle <span class="op">-</span> lambda_ybar)<span class="sc">:.2e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Numerical MLE:  λ̂ = 3.684667
-Sample mean  Ȳ  = 3.684667
-Difference:       1.28e-07</code></pre>
-</div>
+<div id="2c80d66a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Y_obs <span class="op">=</span> df[<span class="st">"patents"</span>].values</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>result_scalar <span class="op">=</span> minimize_scalar(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> lam: <span class="op">-</span>poisson_loglikelihood(lam, Y_obs),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    bounds<span class="op">=</span>(<span class="fl">0.01</span>, <span class="dv">20</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"bounded"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>lambda_mle  <span class="op">=</span> result_scalar.x</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>lambda_ybar <span class="op">=</span> Y_obs.mean()</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Numerical MLE:  λ̂ = </span><span class="sc">{</span>lambda_mle<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sample mean  Ȳ  = </span><span class="sc">{</span>lambda_ybar<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Difference:       </span><span class="sc">{</span><span class="bu">abs</span>(lambda_mle <span class="op">-</span> lambda_ybar)<span class="sc">:.2e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The numerical optimiser recovers the sample mean to six decimal places, confirming both the analytical derivation and the correctness of the log-likelihood implementation. The Poisson log-likelihood is strictly concave in λ, so the optimiser finds the same unique global maximum analytically derived above.</p>
 <hr>
@@ -509,156 +390,48 @@ Y_i \sim \text{Poisson}(\lambda_i), \qquad \lambda_i = \exp(X_i'\beta)
 </section>
 <section id="updated-log-likelihood-function" class="level3">
 <h3 class="anchored" data-anchor-id="updated-log-likelihood-function">Updated Log-Likelihood Function</h3>
-<div id="4752ca60" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poisson_regression_loglikelihood(beta, Y, X):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Log-likelihood for Poisson regression.</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    beta : 1-D array of coefficients</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Y    : 1-D array of observed patent counts</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    X    : 2-D design matrix (n × p)</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    lam <span class="op">=</span> np.exp(X <span class="op">@</span> beta)   <span class="co"># λᵢ = exp(Xᵢ'β), guaranteed positive</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    ll  <span class="op">=</span> np.<span class="bu">sum</span>(<span class="op">-</span>lam <span class="op">+</span> Y <span class="op">*</span> np.log(lam) <span class="op">-</span> gammaln(Y <span class="op">+</span> <span class="dv">1</span>))</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ll</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6779aa41" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poisson_regression_loglikelihood(beta, Y, X):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Log-likelihood for Poisson regression.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">    beta : 1-D array of coefficients</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Y    : 1-D array of observed patent counts</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">    X    : 2-D design matrix (n × p)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    lam <span class="op">=</span> np.exp(X <span class="op">@</span> beta)   <span class="co"># λᵢ = exp(Xᵢ'β), guaranteed positive</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    ll  <span class="op">=</span> np.<span class="bu">sum</span>(<span class="op">-</span>lam <span class="op">+</span> Y <span class="op">*</span> np.log(lam) <span class="op">-</span> gammaln(Y <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ll</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="building-the-design-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="building-the-design-matrix">Building the Design Matrix</h3>
-<div id="e7a0883d" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop 'South' as the baseline region to avoid perfect collinearity</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>regions_dummies <span class="op">=</span> pd.get_dummies(df[<span class="st">"region"</span>], drop_first<span class="op">=</span><span class="va">False</span>, dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>regions_dummies <span class="op">=</span> regions_dummies.drop(columns<span class="op">=</span>[<span class="st">"South"</span>])</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.DataFrame({<span class="st">"intercept"</span>: <span class="fl">1.0</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"age"</span>      : df[<span class="st">"age"</span>],</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"age_sq"</span>   : df[<span class="st">"age"</span>] <span class="op">**</span> <span class="dv">2</span>}</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                 ).join(regions_dummies).join(df[[<span class="st">"iscustomer"</span>]])</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>Y     <span class="op">=</span> df[<span class="st">"patents"</span>].values</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>X_mat <span class="op">=</span> X.values</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Design matrix columns:"</span>, <span class="bu">list</span>(X.columns))</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape:"</span>, X_mat.shape)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>X.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Design matrix columns: ['intercept', 'age', 'age_sq', 'Midwest', 'Northeast', 'Northwest', 'Southwest', 'iscustomer']
-Shape: (1500, 8)</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="38">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">intercept</th>
-<th data-quarto-table-cell-role="th">age</th>
-<th data-quarto-table-cell-role="th">age_sq</th>
-<th data-quarto-table-cell-role="th">Midwest</th>
-<th data-quarto-table-cell-role="th">Northeast</th>
-<th data-quarto-table-cell-role="th">Northwest</th>
-<th data-quarto-table-cell-role="th">Southwest</th>
-<th data-quarto-table-cell-role="th">iscustomer</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>1.0</td>
-<td>32.5</td>
-<td>1056.25</td>
-<td>1.0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>1.0</td>
-<td>37.5</td>
-<td>1406.25</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>1.0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>1.0</td>
-<td>27.0</td>
-<td>729.00</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>1.0</td>
-<td>0.0</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>1.0</td>
-<td>24.5</td>
-<td>600.25</td>
-<td>0.0</td>
-<td>1.0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
-<td>1.0</td>
-<td>37.0</td>
-<td>1369.00</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>1.0</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
+<div id="98d9e2fb" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop 'South' as the baseline region to avoid perfect collinearity</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>regions_dummies <span class="op">=</span> pd.get_dummies(df[<span class="st">"region"</span>], drop_first<span class="op">=</span><span class="va">False</span>, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>regions_dummies <span class="op">=</span> regions_dummies.drop(columns<span class="op">=</span>[<span class="st">"South"</span>])</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.DataFrame({<span class="st">"intercept"</span>: <span class="fl">1.0</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"age"</span>      : df[<span class="st">"age"</span>],</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"age_sq"</span>   : df[<span class="st">"age"</span>] <span class="op">**</span> <span class="dv">2</span>}</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                 ).join(regions_dummies).join(df[[<span class="st">"iscustomer"</span>]])</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>Y     <span class="op">=</span> df[<span class="st">"patents"</span>].values</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>X_mat <span class="op">=</span> X.values</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Design matrix columns:"</span>, <span class="bu">list</span>(X.columns))</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Shape:"</span>, X_mat.shape)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>X.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We include <strong>age</strong> and <strong>age²</strong> because the relationship between firm age and patent output is unlikely to be linear — a quadratic term allows for a potential hump-shaped pattern. We <strong>drop one region dummy</strong> (South) as the baseline category to avoid perfect multicollinearity with the intercept column.</p>
 </section>
 <section id="fitting-the-model" class="level3">
 <h3 class="anchored" data-anchor-id="fitting-the-model">Fitting the Model</h3>
 <p>We fit the Poisson regression using <code>statsmodels</code> GLM, which applies an iteratively reweighted least-squares (IRLS) algorithm that is guaranteed to converge for Poisson models with a log link:</p>
-<div id="41bb8415" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>glm_model  <span class="op">=</span> sm.GLM(Y, X_mat, family<span class="op">=</span>sm.families.Poisson())</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>glm_result <span class="op">=</span> glm_model.fit()</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(glm_result.summary2())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>               Results: Generalized linear model
-===============================================================
-Model:              GLM              AIC:            6532.1443 
-Link Function:      Log              BIC:            -8768.0600
-Dependent Variable: y                Log-Likelihood: -3258.1   
-Date:               2026-05-13 21:42 LL-Null:        -3367.7   
-No. Observations:   1500             Deviance:       2143.3    
-Df Model:           7                Pearson chi2:   2.07e+03  
-Df Residuals:       1492             Scale:          1.0000    
-Method:             IRLS                                       
-----------------------------------------------------------------
-            Coef.   Std.Err.     z      P&gt;|z|    [0.025   0.975]
-----------------------------------------------------------------
-const      -0.4524    0.1829   -2.4734  0.0134  -0.8108  -0.0939
-x1          0.1486    0.0139   10.7162  0.0000   0.1214   0.1758
-x2         -0.0030    0.0003  -11.5132  0.0000  -0.0035  -0.0025
-x3         -0.0566    0.0527   -1.0740  0.2828  -0.1598   0.0467
-x4         -0.0274    0.0451   -0.6073  0.5437  -0.1158   0.0610
-x5         -0.0741    0.0551   -1.3444  0.1788  -0.1822   0.0339
-x6         -0.0060    0.0487   -0.1228  0.9023  -0.1015   0.0895
-x7          0.2076    0.0309    6.7192  0.0000   0.1470   0.2681
-===============================================================
-</code></pre>
-</div>
+<div id="fcf9e8e2" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>glm_model  <span class="op">=</span> sm.GLM(Y, X_mat, family<span class="op">=</span>sm.families.Poisson())</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>glm_result <span class="op">=</span> glm_model.fit()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(glm_result.summary2())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>Note on manual optimisation:</strong> We also attempted to find the MLE using <code>scipy.optimize.minimize</code> (BFGS). That run did <strong>not</strong> converge (<code>Desired error not necessarily achieved due to precision loss</code>), and produced coefficient estimates and standard errors that differed substantially from the GLM results. This is a known issue with general-purpose gradient optimisers applied to Poisson regression when covariates are on very different scales (here <code>age_sq</code> reaches values in the thousands while binary dummies take only 0/1). Because those results were numerically unreliable, we rely exclusively on the <code>statsmodels</code> GLM estimates — whose standard errors come from the exact observed Fisher information matrix — for all inference below.</p>
@@ -666,19 +439,6 @@ x7          0.2076    0.0309    6.7192  0.0000   0.1470   0.2681
 </section>
 <section id="formatted-coefficient-table" class="level3">
 <h3 class="anchored" data-anchor-id="formatted-coefficient-table">Formatted Coefficient Table</h3>
-<div id="8838521f" class="cell" data-execution_count="12">
-<div class="cell-output cell-output-stdout">
-<pre><code>           Variable Estimate Std. Error z-value p-value
-          Intercept  -0.4524     0.1829  -2.473   0.013
-        Age (years)  +0.1486     0.0139 +10.716 &lt; 0.001
-               Age²  -0.0030     0.0003 -11.513 &lt; 0.001
-    Region: Midwest  -0.0566     0.0527  -1.074   0.283
-  Region: Northeast  -0.0274     0.0451  -0.607   0.544
-  Region: Northwest  -0.0741     0.0551  -1.344   0.179
-  Region: Southwest  -0.0060     0.0487  -0.123   0.902
-Blueprinty Customer  +0.2076     0.0309  +6.719 &lt; 0.001</code></pre>
-</div>
-</div>
 </section>
 <section id="interpretation" class="level3">
 <h3 class="anchored" data-anchor-id="interpretation">Interpretation</h3>
@@ -694,38 +454,23 @@ Blueprinty Customer  +0.2076     0.0309  +6.719 &lt; 0.001</code></pre>
 <section id="the-effect-of-blueprintys-software" class="level2">
 <h2 class="anchored" data-anchor-id="the-effect-of-blueprintys-software">The Effect of Blueprinty’s Software</h2>
 <p>Because Poisson regression is a <strong>multiplicative model</strong> — the linear predictor shifts the <em>log</em> of λ, not λ itself — individual coefficients cannot be read as “X additional patents.” To obtain an interpretable additive estimate of the software’s effect we use a <strong>counterfactual prediction</strong> approach.</p>
-<div id="369b4e1a" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Counterfactual X matrices</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>X0 <span class="op">=</span> X.copy()<span class="op">;</span> X0[<span class="st">"iscustomer"</span>] <span class="op">=</span> <span class="dv">0</span>   <span class="co"># every firm set to non-customer</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> X.copy()<span class="op">;</span> X1[<span class="st">"iscustomer"</span>] <span class="op">=</span> <span class="dv">1</span>   <span class="co"># every firm set to customer</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>beta_glm <span class="op">=</span> np.array(glm_result.params)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>y_hat_0    <span class="op">=</span> np.exp(X0.values <span class="op">@</span> beta_glm)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>y_hat_1    <span class="op">=</span> np.exp(X1.values <span class="op">@</span> beta_glm)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>avg_effect <span class="op">=</span> (y_hat_1 <span class="op">-</span> y_hat_0).mean()</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Avg predicted patents — non-customer scenario:  </span><span class="sc">{</span>y_hat_0<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Avg predicted patents — customer scenario:      </span><span class="sc">{</span>y_hat_1<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average Treatment Effect (ATE):                 </span><span class="sc">{</span>avg_effect<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Relative gain:                                  </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>avg_effect<span class="op">/</span>y_hat_0<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Avg predicted patents — non-customer scenario:  3.4362
-Avg predicted patents — customer scenario:      4.2290
-Average Treatment Effect (ATE):                 0.7928
-Relative gain:                                  23.1%</code></pre>
+<div id="6571b3ad" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Counterfactual X matrices</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>X0 <span class="op">=</span> X.copy()<span class="op">;</span> X0[<span class="st">"iscustomer"</span>] <span class="op">=</span> <span class="dv">0</span>   <span class="co"># every firm set to non-customer</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> X.copy()<span class="op">;</span> X1[<span class="st">"iscustomer"</span>] <span class="op">=</span> <span class="dv">1</span>   <span class="co"># every firm set to customer</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>beta_glm <span class="op">=</span> np.array(glm_result.params)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>y_hat_0    <span class="op">=</span> np.exp(X0.values <span class="op">@</span> beta_glm)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>y_hat_1    <span class="op">=</span> np.exp(X1.values <span class="op">@</span> beta_glm)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>avg_effect <span class="op">=</span> (y_hat_1 <span class="op">-</span> y_hat_0).mean()</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Avg predicted patents — non-customer scenario:  </span><span class="sc">{</span>y_hat_0<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Avg predicted patents — customer scenario:      </span><span class="sc">{</span>y_hat_1<span class="sc">.</span>mean()<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average Treatment Effect (ATE):                 </span><span class="sc">{</span>avg_effect<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Relative gain:                                  </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>avg_effect<span class="op">/</span>y_hat_0<span class="sc">.</span>mean()<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-<div id="7c6bd449" class="cell" data-execution_count="14">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-15-output-1.png" width="1235" height="421" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Holding each firm’s age and region fixed at their observed values, switching every firm from non-customer to Blueprinty customer is associated with an estimated gain of approximately <strong>0.793</strong> additional patents over five years — a relative increase of roughly <strong>23.1%</strong>.</p>
+<p>Holding each firm’s age and region fixed at their observed values, switching every firm from non-customer to Blueprinty customer is associated with an estimated gain of approximately <strong><code>{python} f"{avg_effect:.3f}"</code></strong> additional patents over five years — a relative increase of roughly <strong><code>{python} f"{100*avg_effect/y_hat_0.mean():.1f}"</code>%</strong>.</p>
 <hr>
 </section>
 <section id="key-takeaways" class="level2">
@@ -744,19 +489,19 @@ Relative gain:                                  23.1%</code></pre>
 <tbody>
 <tr class="odd">
 <td>Raw patent mean — customers</td>
-<td>4.13</td>
+<td><code>{python} f"{mean_cust:.2f}"</code></td>
 </tr>
 <tr class="even">
 <td>Raw patent mean — non-customers</td>
-<td>3.47</td>
+<td><code>{python} f"{mean_noncust:.2f}"</code></td>
 </tr>
 <tr class="odd">
 <td>Estimated ATE (controlling for age &amp; region)</td>
-<td>0.793 additional patents</td>
+<td><code>{python} f"{avg_effect:.3f}"</code> additional patents</td>
 </tr>
 <tr class="even">
 <td>Relative gain</td>
-<td>~23.1%</td>
+<td>~<code>{python} f"{100*avg_effect/y_hat_0.mean():.1f}"</code>%</td>
 </tr>
 <tr class="odd">
 <td>Customer coefficient (GLM)</td>
