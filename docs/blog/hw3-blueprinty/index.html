@@ -267,7 +267,7 @@ window.Quarto = {
 </section>
 <section id="exploring-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
-<div id="3b19b647" class="cell" data-execution_count="1">
+<div id="6cc9e84d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -338,7 +338,7 @@ window.Quarto = {
 <section id="patent-counts-by-customer-status" class="level3">
 <h3 class="anchored" data-anchor-id="patent-counts-by-customer-status">Patent Counts by Customer Status</h3>
 <p>We begin by comparing the distribution of patent counts between Blueprinty customers (<code>iscustomer = 1</code>) and non-customers (<code>iscustomer = 0</code>).</p>
-<div id="51921678" class="cell" data-execution_count="2">
+<div id="0836bfa1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>customers    <span class="op">=</span> df[df[<span class="st">"iscustomer"</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">"patents"</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>noncustomers <span class="op">=</span> df[df[<span class="st">"iscustomer"</span>] <span class="op">==</span> <span class="dv">0</span>][<span class="st">"patents"</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -354,7 +354,7 @@ Mean patents — Non-customers: 3.473
 Difference:                   0.660</code></pre>
 </div>
 </div>
-<div id="6649b35c" class="cell" data-execution_count="3">
+<div id="86a23964" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -367,7 +367,7 @@ Difference:                   0.660</code></pre>
 </section>
 <section id="regional-distribution-by-customer-status" class="level3">
 <h3 class="anchored" data-anchor-id="regional-distribution-by-customer-status">Regional Distribution by Customer Status</h3>
-<div id="e67082aa" class="cell" data-execution_count="4">
+<div id="b44ca83b" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -391,7 +391,7 @@ Southwest         0.825     0.175</code></pre>
 </section>
 <section id="firm-age-by-customer-status" class="level3">
 <h3 class="anchored" data-anchor-id="firm-age-by-customer-status">Firm Age by Customer Status</h3>
-<div id="4a3b75c0" class="cell" data-execution_count="5">
+<div id="e9ed5948" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -432,7 +432,7 @@ f(Y_i \mid \lambda) = \frac{e^{-\lambda}\,\lambda^{Y_i}}{Y_i!}, \qquad Y_i \in \
 </section>
 <section id="coding-the-log-likelihood" class="level3">
 <h3 class="anchored" data-anchor-id="coding-the-log-likelihood">Coding the Log-Likelihood</h3>
-<div id="9ecd745f" class="cell" data-execution_count="6">
+<div id="6f1584c3" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poisson_loglikelihood(lam, Y):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Log-likelihood of Poisson(lambda) given observed counts Y.</span></span>
@@ -449,7 +449,7 @@ f(Y_i \mid \lambda) = \frac{e^{-\lambda}\,\lambda^{Y_i}}{Y_i!}, \qquad Y_i \in \
 </section>
 <section id="visualising-the-log-likelihood" class="level3">
 <h3 class="anchored" data-anchor-id="visualising-the-log-likelihood">Visualising the Log-Likelihood</h3>
-<div id="812d0279" class="cell" data-execution_count="7">
+<div id="4fab2514" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -472,7 +472,7 @@ f(Y_i \mid \lambda) = \frac{e^{-\lambda}\,\lambda^{Y_i}}{Y_i!}, \qquad Y_i \in \
 </section>
 <section id="numerical-mle-via-scipy.optimize" class="level3">
 <h3 class="anchored" data-anchor-id="numerical-mle-via-scipy.optimize">Numerical MLE via <code>scipy.optimize</code></h3>
-<div id="9027e7ac" class="cell" data-execution_count="8">
+<div id="ab6ada73" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Y_obs <span class="op">=</span> df[<span class="st">"patents"</span>].values</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>result_scalar <span class="op">=</span> minimize_scalar(</span>
@@ -509,7 +509,7 @@ Y_i \sim \text{Poisson}(\lambda_i), \qquad \lambda_i = \exp(X_i'\beta)
 </section>
 <section id="updated-log-likelihood-function" class="level3">
 <h3 class="anchored" data-anchor-id="updated-log-likelihood-function">Updated Log-Likelihood Function</h3>
-<div id="7c7b9e78" class="cell" data-execution_count="9">
+<div id="6f9e4e93" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poisson_regression_loglikelihood(beta, Y, X):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Log-likelihood for Poisson regression.</span></span>
@@ -524,7 +524,7 @@ Y_i \sim \text{Poisson}(\lambda_i), \qquad \lambda_i = \exp(X_i'\beta)
 </section>
 <section id="building-the-design-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="building-the-design-matrix">Building the Design Matrix</h3>
-<div id="61987ff1" class="cell" data-execution_count="10">
+<div id="04df5278" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop 'South' as the baseline region to avoid perfect collinearity</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>regions_dummies <span class="op">=</span> pd.get_dummies(df[<span class="st">"region"</span>], drop_first<span class="op">=</span><span class="va">False</span>, dtype<span class="op">=</span><span class="bu">float</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>regions_dummies <span class="op">=</span> regions_dummies.drop(columns<span class="op">=</span>[<span class="st">"South"</span>])</span>
@@ -629,7 +629,7 @@ Shape: (1500, 8)</code></pre>
 <section id="fitting-the-model" class="level3">
 <h3 class="anchored" data-anchor-id="fitting-the-model">Fitting the Model</h3>
 <p>We fit the Poisson regression using <code>statsmodels</code> GLM, which applies an iteratively reweighted least-squares (IRLS) algorithm that is guaranteed to converge for Poisson models with a log link:</p>
-<div id="6732d4e9" class="cell" data-execution_count="11">
+<div id="642f09a3" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>glm_model  <span class="op">=</span> sm.GLM(Y, X_mat, family<span class="op">=</span>sm.families.Poisson())</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>glm_result <span class="op">=</span> glm_model.fit()</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -640,7 +640,7 @@ Shape: (1500, 8)</code></pre>
 Model:              GLM              AIC:            6532.1443 
 Link Function:      Log              BIC:            -8768.0600
 Dependent Variable: y                Log-Likelihood: -3258.1   
-Date:               2026-05-13 22:11 LL-Null:        -3367.7   
+Date:               2026-05-13 22:16 LL-Null:        -3367.7   
 No. Observations:   1500             Deviance:       2143.3    
 Df Model:           7                Pearson chi2:   2.07e+03  
 Df Residuals:       1492             Scale:          1.0000    
@@ -666,7 +666,7 @@ x7          0.2076    0.0309    6.7192  0.0000   0.1470   0.2681
 </section>
 <section id="formatted-coefficient-table" class="level3">
 <h3 class="anchored" data-anchor-id="formatted-coefficient-table">Formatted Coefficient Table</h3>
-<div id="02ee4059" class="cell" data-execution_count="12">
+<div id="f1763d13" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
 <pre><code>           Variable Estimate Std. Error z-value p-value
           Intercept  -0.4524     0.1829  -2.473   0.013
@@ -694,7 +694,7 @@ Blueprinty Customer  +0.2076     0.0309  +6.719 &lt; 0.001</code></pre>
 <section id="the-effect-of-blueprintys-software" class="level2">
 <h2 class="anchored" data-anchor-id="the-effect-of-blueprintys-software">The Effect of Blueprinty’s Software</h2>
 <p>Because Poisson regression is a <strong>multiplicative model</strong> — the linear predictor shifts the <em>log</em> of λ, not λ itself — individual coefficients cannot be read as “X additional patents.” To obtain an interpretable additive estimate of the software’s effect we use a <strong>counterfactual prediction</strong> approach.</p>
-<div id="20710f17" class="cell" data-execution_count="13">
+<div id="a3d33979" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Counterfactual X matrices</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>X0 <span class="op">=</span> X.copy()<span class="op">;</span> X0[<span class="st">"iscustomer"</span>] <span class="op">=</span> <span class="dv">0</span>   <span class="co"># every firm set to non-customer</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> X.copy()<span class="op">;</span> X1[<span class="st">"iscustomer"</span>] <span class="op">=</span> <span class="dv">1</span>   <span class="co"># every firm set to customer</span></span>
@@ -716,7 +716,7 @@ Average Treatment Effect (ATE):                 0.7928
 Relative gain:                                  23.1%</code></pre>
 </div>
 </div>
-<div id="e614da13" class="cell" data-execution_count="14">
+<div id="2fbd7099" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
