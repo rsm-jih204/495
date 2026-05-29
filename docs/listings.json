@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/hw4-maxdiff/index.html",
       "/blog/hw3-blueprinty/index.html",
       "/blog/card-krueger/index.html",
       "/blog/ab-testing/index.html"
